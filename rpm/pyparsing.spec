@@ -1,6 +1,9 @@
 %global srcname pyparsing
 %global _summary Python package with an object-oriented approach to text processing
 
+%global python3_pkgversion 3
+%global python3_version 3
+
 # when bootstrapping Python 3, pyparsing needs to be rebuilt before depndency generator is available
 %bcond_with bootstrap
 %if %{without bootstrap}
@@ -19,7 +22,7 @@ URL:            https://github.com/pyparsing/pyparsing
 Source0:        https://github.com/%{name}/%{name}/archive/%{name}_%{version}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  dos2unix
+#BuildRequires:  dos2unix
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
@@ -56,7 +59,7 @@ Provides:       python%{python3_version}dist(pyparsing) = %{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 %description -n python%{python3_pkgversion}-pyparsing
-pyparsing is a module that can be used to easily and directly configure syntax
+ pyparsing is a module that can be used to easily and directly configure syntax
 definitions for any number of text parsing applications.
 
 This is the Python 3 version.
@@ -64,7 +67,7 @@ This is the Python 3 version.
 
 %prep
 %setup -q -n %{name}-%{name}_%{version}/pyparsing
-dos2unix -k CHANGES LICENSE
+#dos2unix -k CHANGES LICENSE
 
 
 %build
